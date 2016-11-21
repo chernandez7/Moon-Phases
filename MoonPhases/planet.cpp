@@ -138,3 +138,15 @@ void Planet::addMoon(float distanceFromPlanet, float orbitTime, float rotationTi
 {
 	moons.push_back(Moon(distanceFromPlanet, orbitTime, rotationTime, radius, textureHandle));
 }
+
+Moon Planet::getMoon(int index) {
+	return moons[index];
+}
+
+float* Planet::getActualPosition() {
+	float vec[3];
+	vec[0] = position[0] * distanceScale;
+	vec[1] = position[1] * distanceScale;
+	vec[2] = position[2] * distanceScale;
+	return vec;
+}

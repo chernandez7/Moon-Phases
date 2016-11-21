@@ -61,6 +61,11 @@ public:
 
 	// add a moon to this planet
 	void addMoon(float distanceFromPlanet, float orbitTime, float rotationTime, float radius, GLuint textureHandle);
+
+	Moon getMoon(int index);
+
+	float* getActualPosition();
+
 };
 
 #endif

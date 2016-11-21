@@ -15,4 +15,6 @@ const float distanceScale = 0.00000001f;
 // is 6,371km and the scale is 0.0001f, it will be drawn with a radius of 0.6371 units
 extern float planetSizeScale;
 
+extern bool isEarthView;
+
 #endif

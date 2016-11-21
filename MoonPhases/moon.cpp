@@ -76,3 +76,7 @@ void Moon::renderOrbit(void)
 
 	glEnd();
 }
+
+float* Moon::getPosition() {
+	return position;
+}

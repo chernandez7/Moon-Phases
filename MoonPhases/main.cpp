@@ -38,6 +38,7 @@ Camera camera;
 // These control the simulation of time
 double time;
 double timeSpeed;
+bool isEarthView;
 
 // holds the state of the controls for the camera - when true, the key for that control is being pressed
 struct ControlStates
@@ -109,16 +110,23 @@ void init(void)
 	TGA* sun = new TGA("images/sun.tga");
 	TGA* earth = new TGA("images/earth.tga");
 
-	// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
-	solarSystem.addPlanet(0, 1, 500, 69500, sun->getTextureHandle()); // sun
-	solarSystem.addPlanet(149600000, 365, 1, 15*5000, earth->getTextureHandle()); // earth
-	solarSystem.addMoon(1, 10*7000000, 27.3, 60, 4*10000, moon->getTextureHandle()); // test moon for the earth
-
-																				 // set up time
+	if (!isEarthView) {
+		// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
+		solarSystem.addPlanet(0, 1, 500, .8 * 69500, sun->getTextureHandle()); // sun
+		solarSystem.addPlanet(149600000, 365, 1, 13 * 5000, earth->getTextureHandle()); // earth
+		solarSystem.addMoon(1, 11 * 7000000, 27.3, 60, 6 * 10000, moon->getTextureHandle()); // test moon for the earth
+	}
+	else {
+		// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
+		solarSystem.addPlanet(0, 1, 500, .8 * 69500, sun->getTextureHandle()); // sun
+		solarSystem.addPlanet(149600000, 365, 1, 1, earth->getTextureHandle()); // earth
+		solarSystem.addMoon(1, 11 * 7000000, 27.3, 60, 6 * 10000, moon->getTextureHandle()); // test moon for the earth
+	}
+	// set up time
 	time = 1.0f;
 	timeSpeed = 0.015f;
 
-	/* reset controls
+	/* // reset controls
 	controls.forward = false;
 	controls.backward = false;
 	controls.left = false;
@@ -142,7 +150,8 @@ void display(void)
 	time += timeSpeed;
 	if (time > 60) time = 0; // Only show 1 month
 
-	/* Debug output for getting camera pos
+	/*
+	// Debug output for getting camera pos
 	for (int i = 0; i < 3; i++) {
 		std::cout << i << " forwardVec: " << camera.forwardVec[i] << std::endl;
 		std::cout << i << " rightVec: " << camera.rightVec[i] << std::endl;
@@ -152,13 +161,20 @@ void display(void)
 
 	int date = (time / 2) + 1;
 
+	if (isEarthView) {
+		//camera.setPosition(solarSystem.getPlanet(1).getActualPosition());
+		//camera.pointAt(solarSystem.getPlanet(1).getMoon(0).getPosition());
+		//camera.setPosition(solarSystem.getPlanet(0).getActualPosition());
+		camera.pointAt(solarSystem.getPlanet(1).getActualPosition());
+	}
+
 	glPushMatrix();
 	//std::cout << "date: " << date << std::endl;
 	glPopMatrix();
 
 	solarSystem.calculatePositions(time);
 	
-	/* Remove camera controls
+	/* //Remove camera controls
 	if (controls.forward) camera.forward();		if (controls.backward) camera.backward();
 	if (controls.left) camera.left();			if (controls.right) camera.right();
 	if (controls.yawLeft) camera.yawLeft();		if (controls.yawRight) camera.yawRight();
@@ -343,6 +359,12 @@ void reshape(int w, int h)
 
 int main(int argc, char** argv)
 {
+	char view;
+	std::cout << "'e' for earth view, 'o' for outer view." << std::endl;
+	std::cin >> view;
+	if (view == 'e') isEarthView = true;
+	else isEarthView = false;
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(1200, 700);

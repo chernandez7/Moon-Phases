@@ -43,6 +43,8 @@ public:
 
 	// get the radius of the planet at the given index in the planets list
 	float getRadiusOfPlanet(int index);
+
+	Planet getPlanet(int index);
 };
 
 #endif

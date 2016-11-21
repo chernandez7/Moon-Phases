@@ -63,3 +63,7 @@ float SolarSystem::getRadiusOfPlanet(int index)
 {
 	return planets[index].getRadius();
 }
+
+Planet SolarSystem::getPlanet(int index) {
+	return planets[index];
+}

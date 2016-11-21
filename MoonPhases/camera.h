@@ -73,6 +73,8 @@ public:
 
 	// yaw right
 	void yawRight(void);
+
+	void setPosition(float* vec);
 };
 
 #endif

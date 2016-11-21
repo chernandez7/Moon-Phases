@@ -47,6 +47,8 @@ public:
 
 	// render this moons orbit circle
 	void renderOrbit(void);
+
+	float* getPosition();
 };
 
 #endif
