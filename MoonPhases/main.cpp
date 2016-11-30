@@ -358,11 +358,14 @@ void reshape(int w, int h)
 
 int main(int argc, char** argv)
 {
+	/*
 	char view;
 	std::cout << "'e' for earth view, 'o' for outer view." << std::endl;
 	std::cin >> view;
 	if (view == 'e') isEarthView = true;
 	else isEarthView = false;
+	*/
+	isEarthView = false; // Keeping outer view for presentation
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

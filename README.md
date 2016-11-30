@@ -8,8 +8,5 @@ Building upon [this](https://github.com/RyanPridgeon/solarsystem) project to emp
 
 [See it in action here!](https://www.youtube.com/watch?v=gjB-TBw-Pcc)
 
-## Earth View
-WIP
-
 ### License
  - MIT License
