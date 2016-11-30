@@ -119,7 +119,7 @@ void init(void)
 	else {
 		// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
 		solarSystem.addPlanet(0, 1, 500, .8 * 69500, sun->getTextureHandle()); // sun
-		solarSystem.addPlanet(149600000, 365, 1, 1, earth->getTextureHandle()); // earth
+		solarSystem.addPlanet(149600000, 365, 1, 10000, earth->getTextureHandle()); // earth
 		solarSystem.addMoon(1, 11 * 7000000, 27.3, 60, 6 * 10000, moon->getTextureHandle()); // test moon for the earth
 	}
 	// set up time
@@ -162,10 +162,9 @@ void display(void)
 	int date = (time / 2) + 1;
 
 	if (isEarthView) {
-		//camera.setPosition(solarSystem.getPlanet(1).getActualPosition());
-		//camera.pointAt(solarSystem.getPlanet(1).getMoon(0).getPosition());
 		//camera.setPosition(solarSystem.getPlanet(0).getActualPosition());
-		camera.pointAt(solarSystem.getPlanet(1).getActualPosition());
+		camera.pointAt(solarSystem.getPlanet(1).getMoon(0).getPosition());
+		//camera.pointAt(solarSystem.getPlanet(1).getActualPosition());
 	}
 
 	glPushMatrix();
