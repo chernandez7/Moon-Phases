@@ -40,6 +40,15 @@ double time;
 double timeSpeed;
 bool isEarthView;
 
+TGA* newMoon = new TGA("images/1.tga");
+TGA* waxingCrescent = new TGA("images/2.tga");
+TGA* firstQuarter = new TGA("images/3.tga");
+TGA* waxingGibbous = new TGA("images/4.tga");
+TGA* fullMoon = new TGA("images/5.tga");
+TGA* waningGibbous = new TGA("images/6.tga");
+TGA* lastQuarter = new TGA("images/7.tga");
+TGA* waningCrescent = new TGA("images/8.tga");
+
 // holds the state of the controls for the camera - when true, the key for that control is being pressed
 struct ControlStates
 {
@@ -110,6 +119,17 @@ void init(void)
 	TGA* sun = new TGA("images/sun.tga");
 	TGA* earth = new TGA("images/earth.tga");
 
+	/*
+	TGA* newMoon = new TGA("images/1.tga");
+	TGA* waxingCrescent = new TGA("images/2.tga");
+	TGA* firstQuarter = new TGA("images/3.tga");
+	TGA* waxingGibbous = new TGA("images/4.tga");
+	TGA* fullMoon = new TGA("images/5.tga");
+	TGA* waningGibbous = new TGA("images/6.tga");
+	TGA* lasQuarter = new TGA("images/7.tga");
+	TGA* waningCrescent = new TGA("images/8.tga");
+	*/
+
 	if (!isEarthView) {
 		// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
 		solarSystem.addPlanet(0, 1, 500, .8 * 69500, sun->getTextureHandle()); // sun
@@ -143,6 +163,19 @@ void init(void)
 }
 
 void drawCube(void);
+
+void drawImage(GLuint texture) {
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, texture);
+	GLUquadricObj* quadric = gluNewQuadric();
+	gluQuadricTexture(quadric, true);
+	gluQuadricNormals(quadric, GLU_SMOOTH);
+	glDisable(GL_LIGHTING);
+	gluDisk(quadric, 10, 30, 5, 1);
+	//glTranslatef(0, 100, 0);
+	glEnable(GL_LIGHTING);
+	glPopMatrix();
+}
 
 void display(void)
 {
@@ -228,9 +261,33 @@ void display(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	if (time < 7.5) {
+		drawImage(newMoon->getTextureHandle());
+	} else if (time > 7.5 && time < 15) {
+		drawImage(waxingCrescent->getTextureHandle());
+	}
+	else if (time > 15 && time < 22.5) {
+		drawImage(firstQuarter->getTextureHandle());
+	}
+	else if (time > 22.5 && time < 30) {
+		drawImage(waxingGibbous->getTextureHandle());
+	}
+	else if (time > 30 && time < 37.5) {
+		drawImage(fullMoon->getTextureHandle());
+	}
+	else if (time > 37.5 && time < 45) {
+		drawImage(waningGibbous->getTextureHandle());
+	}
+	else if (time > 45 && time < 52.5) {
+		drawImage(lastQuarter->getTextureHandle());
+	}
+	else {
+		drawImage(waningCrescent->getTextureHandle());
+	}
 	glFlush();
 	glutSwapBuffers();
 }
+
 void keyDown(unsigned char key, int x, int y)
 {
 	/* remove look at functionality
@@ -377,6 +434,7 @@ int main(int argc, char** argv)
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(keyDown);
 	glutKeyboardUpFunc(keyUp);
+
 	glutMainLoop();
 	return 0;
 }
