@@ -263,8 +263,8 @@ void display(void)
 	else
 		glBindTexture(GL_TEXTURE_2D, waningCrescent->getTextureHandle());
 	*/
-	glBindTexture(GL_TEXTURE_2D, newMoon->getTextureHandle());
-	drawImage();
+	//glBindTexture(GL_TEXTURE_2D, newMoon->getTextureHandle());
+	//drawImage();
 
 	glFlush();
 	glutSwapBuffers();
