@@ -10,7 +10,13 @@ See LICENSE.TXT*/
 #ifdef _WIN32
 #include <Windows.h>
 #endif
-#include <gl\GL.h>
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+#else
+#include <GL/gl.h>
+#include <GL/glut.h>
+#endif
 #include <vector>
 #include "moon.h"
 

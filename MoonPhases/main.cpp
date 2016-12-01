@@ -9,9 +9,13 @@ See LICENSE.TXT*/
 #ifdef _WIN32
 #include <Windows.h>
 #endif
-#include <gl\gl.h>
-#include <gl\glut.h>
-#include <GL\glu.h>
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+#else
+#include <GL/gl.h>
+#include <GL/glut.h>
+#endif
 #include <iostream>
 
 #include "tga.h"
@@ -39,7 +43,7 @@ SolarSystem solarSystem;
 Camera camera;
 
 // These control the simulation of time
-double time;
+double _time;
 double timeSpeed;
 bool isEarthView;
 
@@ -136,7 +140,7 @@ void init(void)
 		solarSystem.addMoon(1, 11 * 7000000, 27.3, 60, 6 * 10000, moon->getTextureHandle()); // test moon for the earth
 	}
 	// set up time
-	time = 1.0f;
+	_time = 1.0f;
 	timeSpeed = 0.015f;
 
 	/* // reset controls
@@ -169,8 +173,8 @@ void drawImage(void) {
 void display(void)
 {
 	// update the logic and simulation
-	time += timeSpeed;
-	if (time >= 60) time = 0; // Only show 1 month
+	_time += timeSpeed;
+	if (_time >= 60) _time = 0; // Only show 1 month
 
 	/*
 	// Debug output for getting camera pos
@@ -189,7 +193,7 @@ void display(void)
 	}
 	*/
 
-	solarSystem.calculatePositions(time);
+	solarSystem.calculatePositions(_time);
 	
 	/* //Remove camera controls
 	if (controls.forward) camera.forward();		if (controls.backward) camera.backward();
