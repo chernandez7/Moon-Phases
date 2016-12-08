@@ -114,18 +114,12 @@ void init(void)
 	TGA* sun = new TGA("images/sun.tga");
 	TGA* earth = new TGA("images/earth.tga");
 
-	if (!isEarthView) {
-		// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
-		solarSystem.addPlanet(0, 1, 500, .8 * 69500, sun->getTextureHandle()); // sun
-		solarSystem.addPlanet(149600000, 365, 1, 13 * 5000, earth->getTextureHandle()); // earth
-		solarSystem.addMoon(1, 11 * 7000000, 27.3, 60, 6 * 10000, moon->getTextureHandle()); // test moon for the earth
-	}
-	else {
-		// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
-		solarSystem.addPlanet(0, 1, 500, .8 * 69500, sun->getTextureHandle()); // sun
-		solarSystem.addPlanet(149600000, 365, 1, 10000, earth->getTextureHandle()); // earth
-		solarSystem.addMoon(1, 11 * 7000000, 27.3, 60, 6 * 10000, moon->getTextureHandle()); // test moon for the earth
-	}
+
+	// Add all the planets with accurate data. Distance measured in km, time measured in earth days.
+	solarSystem.addPlanet(0, 1, 500, .8 * 69500, sun->getTextureHandle()); // sun
+	solarSystem.addPlanet(149600000, 365, 1, 13 * 5000, earth->getTextureHandle()); // earth
+	solarSystem.addMoon(1, 11 * 7000000, 27.3, 60, 6 * 10000, moon->getTextureHandle()); // test moon for the earth
+
 	// set up time
 	_time = 1.0f;
 	timeSpeed = 0.015f;
