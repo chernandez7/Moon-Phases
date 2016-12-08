@@ -43,7 +43,6 @@ Camera camera;
 // These control the simulation of time
 double _time;
 double timeSpeed;
-bool isEarthView;
 
 // holds the state of the controls for the camera - when true, the key for that control is being pressed
 struct ControlStates
@@ -164,23 +163,6 @@ void display(void)
 	_time += timeSpeed;
 	if (_time >= 60) _time = 0; // Only show 1 month
 
-	/*
-	// Debug output for getting camera pos
-	for (int i = 0; i < 3; i++) {
-		std::cout << i << " forwardVec: " << camera.forwardVec[i] << std::endl;
-		std::cout << i << " rightVec: " << camera.rightVec[i] << std::endl;
-		std::cout << i << " UpVec: " << camera.upVec[i] << std::endl;
-		std::cout << i << " position: " << camera.position[i] << std::endl;
-	}*/
-
-	/*
-	if (isEarthView) {
-		//camera.setPosition(solarSystem.getPlanet(0).getActualPosition());
-		camera.pointAt(solarSystem.getPlanet(1).getMoon(0).getPosition());
-		//camera.pointAt(solarSystem.getPlanet(1).getActualPosition());
-	}
-	*/
-
 	solarSystem.calculatePositions(_time);
 	
 	/* //Remove camera controls
@@ -237,26 +219,6 @@ void display(void)
 	gluOrtho2D(0.0, (GLdouble)screenWidth, (GLdouble)screenHeight, 0.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	/*
-	if (time < 7.5)
-		glBindTexture(GL_TEXTURE_2D, newMoon->getTextureHandle());
-	else if (time > 7.5 && time < 15)
-		glBindTexture(GL_TEXTURE_2D, waxingCrescent->getTextureHandle());
-	else if (time > 15 && time < 22.5)
-		glBindTexture(GL_TEXTURE_2D, firstQuarter->getTextureHandle());
-	else if (time > 22.5 && time < 30)
-		glBindTexture(GL_TEXTURE_2D, waxingGibbous->getTextureHandle());
-	else if (time > 30 && time < 37.5)
-		glBindTexture(GL_TEXTURE_2D, fullMoon->getTextureHandle());
-	else if (time > 37.5 && time < 45)
-		glBindTexture(GL_TEXTURE_2D, waningGibbous->getTextureHandle());
-	else if (time > 45 && time < 52.5)
-		glBindTexture(GL_TEXTURE_2D, lastQuarter->getTextureHandle());
-	else
-		glBindTexture(GL_TEXTURE_2D, waningCrescent->getTextureHandle());
-	*/
-	//glBindTexture(GL_TEXTURE_2D, newMoon->getTextureHandle());
-	//drawImage();
 
 	glFlush();
 	glutSwapBuffers();
@@ -389,15 +351,6 @@ void reshape(int w, int h)
 
 int main(int argc, char** argv)
 {
-	/*
-	char view;
-	std::cout << "'e' for earth view, 'o' for outer view." << std::endl;
-	std::cin >> view;
-	if (view == 'e') isEarthView = true;
-	else isEarthView = false;
-	*/
-	isEarthView = false; // Keeping outer view for presentation
-
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(1200, 700);
