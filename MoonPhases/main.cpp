@@ -140,6 +140,8 @@ void init(void)
 	timer(0);
 }
 
+int main(int argc, char ** argv);
+
 void drawCube(void);
 
 void drawImage(void) {
@@ -343,8 +345,18 @@ void reshape(int w, int h)
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
 }
 
+void printInstructions() {
+	std::cout << "====== Instructions ======" << std::endl;
+	std::cout << "+	increases speed" << std::endl;
+	std::cout << "-	decreases speed" << std::endl;
+	std::cout << "o	show orbits" << std::endl;
+	std::cout << "==========================" << std::endl;
+}
+
 int main(int argc, char** argv)
 {
+	printInstructions();
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(1200, 700);
