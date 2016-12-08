@@ -2,7 +2,7 @@
 
 See LICENSE.TXT*/
 
-// Ryan Pridgeon COM2032 rp00091
+// Christopher Hernandez chris00hernandez@gmail.com
 
 #include "solarsystem.h"
 

@@ -2,10 +2,10 @@
 
 See LICENSE.TXT*/
 
-// Ryan Pridgeon COM2032 rp00091
+// Christopher Hernandez chris00hernandez@gmail.com
 
-#ifndef RYAN_GLOBALS_H
-#define RYAN_GLOBALS_H
+#ifndef CHRIS_GLOBALS_H
+#define CHRIS_GLOBALS_H
 
 // This scales down the distances of planets in the simulation. For example, if the scale is 0.00000001
 // and a planet is 149600000km from the sun, it will be drawn at 1.496 units in 3d space from the sun

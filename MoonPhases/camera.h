@@ -2,10 +2,10 @@
 
 See LICENSE.TXT*/
 
-// Ryan Pridgeon COM2032 rp00091
+// Christopher Hernandez chris00hernandez@gmail.com
 
-#ifndef RYAN_CAMERA_H
-#define RYAN_CAMERA_H
+#ifndef CHRIS_CAMERA_H
+#define CHRIS_CAMERA_H
 
 class Camera
 {

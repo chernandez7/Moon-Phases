@@ -2,7 +2,7 @@
 
 See LICENSE.TXT*/
 
-// Ryan Pridgeon COM2032 rp00091
+// Christopher Hernandez chris00hernandez@gmail.com
 
 #include <cmath>
 #include <cstdlib>
@@ -27,9 +27,7 @@ See LICENSE.TXT*/
 int screenWidth, screenHeight;
 
 // The TGA texture containing the help dialogue and starfield and moon texture
-TGA *stars, *moon,
-*newMoon;/* , *waxingCrescent, *firstQuarter, *waxingGibbous,
-	*fullMoon, *waningGibbous, *lastQuarter, *waningCrescent;*/
+TGA *stars, *moon, *newMoon;
 
 // toggles if orbits are drawn
 bool showOrbits = false;
@@ -113,16 +111,6 @@ void init(void)
 	// Load all image data
 	stars = new TGA("images/stars.tga");
 	moon = new TGA("images/moon.tga");
-
-	// Moon Phases
-	newMoon = new TGA("images/1.tga");
-	/*waxingCrescent = new TGA("images/2.tga");
-	firstQuarter = new TGA("images/3.tga");
-	waxingGibbous = new TGA("images/4.tga");
-	fullMoon = new TGA("images/5.tga");
-	waningGibbous = new TGA("images/6.tga");
-	lastQuarter = new TGA("images/7.tga");
-	waningCrescent = new TGA("images/8.tga");*/
 
 	TGA* sun = new TGA("images/sun.tga");
 	TGA* earth = new TGA("images/earth.tga");

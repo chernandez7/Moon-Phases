@@ -2,10 +2,10 @@
 
 See LICENSE.TXT*/
 
-// Ryan Pridgeon COM2032 rp00091
+// Christopher Hernandez chris00hernandez@gmail.com
 
-#ifndef RYAN_MOON_H
-#define RYAN_MOON_H
+#ifndef CHRIS_MOON_H
+#define CHRIS_MOON_H
 
 #ifdef _WIN32
 #include <Windows.h>
