@@ -13,6 +13,7 @@ Either build with Visual studio or navigate to `.\Moonphases\` and run `make` (i
 Then run `./moonPhases.exe`.
 
 ## Controls
+```
 +       increases speed
 -       decreases speed
 o       show orbits
@@ -28,6 +29,7 @@ q       camera yaw left
 e       camera yaw right
 .       increase camera speed
 ,       decrease camera speed
+```
 
 ## Outer View
 ![alt text](http://i.imgur.com/qEaAJh5.jpg "Outer View")
