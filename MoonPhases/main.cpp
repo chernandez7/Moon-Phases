@@ -4,6 +4,10 @@ See LICENSE.TXT*/
 
 // Christopher Hernandez chris00hernandez@gmail.com
 
+
+//Building upon https://github.com/RyanPridgeon/solarsystem to emphasize the phases of the moon.
+
+
 #include <cmath>
 #include <cstdlib>
 #ifdef _WIN32

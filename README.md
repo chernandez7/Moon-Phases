@@ -1,7 +1,5 @@
 # Moon-Phases
-NupenGL model of moon phases for Astronomy (PHYS 102)
-
-Building upon [this](https://github.com/RyanPridgeon/solarsystem) project to emphasize the phases of the moon and show how eclipses work.
+NupenGL model of moon phases for Astronomy PHYS 102.
 (Releases available have pre-compiled versions of the program)
 
 ## Dev Install Instructions
