@@ -124,7 +124,7 @@ void init(void)
 	_time = 1.0f;
 	timeSpeed = 0.015f;
 
-	/* // reset controls
+	// reset controls
 	controls.forward = false;
 	controls.backward = false;
 	controls.left = false;
@@ -135,12 +135,10 @@ void init(void)
 	controls.pitchUp = false;
 	controls.yawLeft = false;
 	controls.yawRight = false;
-	*/
+	
 
 	timer(0);
 }
-
-int main(int argc, char ** argv);
 
 void drawCube(void);
 
@@ -161,13 +159,12 @@ void display(void)
 
 	solarSystem.calculatePositions(_time);
 	
-	/* //Remove camera controls
 	if (controls.forward) camera.forward();		if (controls.backward) camera.backward();
 	if (controls.left) camera.left();			if (controls.right) camera.right();
 	if (controls.yawLeft) camera.yawLeft();		if (controls.yawRight) camera.yawRight();
 	if (controls.rollLeft) camera.rollLeft();	if (controls.rollRight) camera.rollRight();
 	if (controls.pitchUp) camera.pitchUp();		if (controls.pitchDown) camera.pitchDown();
-	*/
+	
 	// clear the buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor3f(1.0, 1.0, 1.0);
@@ -222,19 +219,6 @@ void display(void)
 
 void keyDown(unsigned char key, int x, int y)
 {
-	/* remove look at functionality
-	// check for numerical keys
-	if (key > '0' && key <= '9')
-	{
-		// point at the specified planet
-		float vec[3];
-		solarSystem.getPlanetPosition(key - '0', vec);
-		camera.pointAt(vec);
-
-		// select that planet
-		planetSelected = key - '0';
-	}
-	*/
 	switch (key)
 	{
 	case '-':
@@ -245,19 +229,6 @@ void keyDown(unsigned char key, int x, int y)
 		break;
 	case 'o':
 		showOrbits = !showOrbits; // toggle show orbits
-		break;
-		/*
-	case '[':
-		planetSizeScale /= 1.2; // make planet scale smaller
-		break;
-	case ']':
-		planetSizeScale *= 1.2; // make planet scale bigger
-		break;
-	case 'm':
-		addMoon(); // add a moon to the selected planet
-		break;
-	case 'r':
-		planetSizeScale = distanceScale;
 		break;
 	case ',':
 		camera.slowDown(); // slow down camera
@@ -296,7 +267,6 @@ void keyDown(unsigned char key, int x, int y)
 	case 'e':
 		controls.yawRight = true;
 		break;
-		*/
 	}
 
 }
@@ -346,11 +316,23 @@ void reshape(int w, int h)
 }
 
 void printInstructions() {
-	std::cout << "====== Instructions ======" << std::endl;
+	std::cout << "======== Instructions ========" << std::endl;
 	std::cout << "+	increases speed" << std::endl;
 	std::cout << "-	decreases speed" << std::endl;
 	std::cout << "o	show orbits" << std::endl;
-	std::cout << "==========================" << std::endl;
+	std::cout << "w	camera forward" << std::endl;
+	std::cout << "s	camera backward" << std::endl;
+	std::cout << "a	camera left" << std::endl;
+	std::cout << "d	camera right" << std::endl;
+	std::cout << "l	camera roll right" << std::endl;
+	std::cout << "j	camera roll left" << std::endl;
+	std::cout << "i	camera pitch down" << std::endl;
+	std::cout << "k	camera pitch up" << std::endl;
+	std::cout << "q	camera yaw left" << std::endl;
+	std::cout << "e	camera yaw right" << std::endl;
+	std::cout << ".	increase camera speed" << std::endl;
+	std::cout << ",	decrease camera speed" << std::endl;
+	std::cout << "==============================" << std::endl;
 }
 
 int main(int argc, char** argv)
